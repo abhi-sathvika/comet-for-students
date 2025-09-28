@@ -30,5 +30,5 @@ The platform presents UCSD students with promotional content about **Comet**. Be
 
 ## 📊 Example Insights
 - 120+ student interactions tracked
-- Variant message increased **CTR by 12%** compared to control
+- Variant message increased **CTR by 18%** compared to control
 - SQL queries enabled quick segmentation and engagement analysis
