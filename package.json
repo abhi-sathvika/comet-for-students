@@ -1,0 +1,40 @@
+{
+  "name": "comet-for-students",
+  "version": "1.0.0",
+  "description": "A/B testing project for Comet promotion with Next.js frontend and Python backend",
+  "private": true,
+  "scripts": {
+    "dev": "cd src/nextjs-app && npm run dev",
+    "build": "cd src/nextjs-app && npm run build",
+    "start": "cd src/nextjs-app && npm run start",
+    "lint": "cd src/nextjs-app && npm run lint",
+    "frontend:install": "cd src/nextjs-app && npm install",
+    "frontend:dev": "cd src/nextjs-app && npm run dev",
+    "frontend:build": "cd src/nextjs-app && npm run build",
+    "backend:install": "cd src/backend && pip install -r requirements.txt",
+    "backend:dev": "cd src/backend && uvicorn main:app --reload",
+    "install-all": "npm run frontend:install && npm run backend:install",
+    "dev-all": "concurrently \"npm run frontend:dev\" \"npm run backend:dev\"",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "ab-testing",
+    "nextjs",
+    "fastapi",
+    "supabase",
+    "comet",
+    "promotion"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "workspaces": [
+    "src/nextjs-app"
+  ],
+  "engines": {
+    "node": ">=18.17.0",
+    "npm": ">=9.0.0"
+  }
+}

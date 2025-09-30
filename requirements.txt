@@ -1,0 +1,10 @@
+pandas==2.1.4
+matplotlib==3.8.2
+scipy==1.11.4
+sqlalchemy==2.0.23
+jupyterlab==4.0.9
+psycopg2-binary==2.9.9
+supabase==2.0.2
+python-dotenv==1.0.0
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
