@@ -24,18 +24,19 @@ export default function ABTestLanding() {
 
     setIsLoading(true)
     try {
+      // Get the group ID first
+      const groupId = await getGroupId(group)
+      
       // For demo purposes, create a temporary user to log the click
       // In production, you'd handle this differently based on your auth flow
       const tempUser = await getOrCreateUser(
         `Demo User ${Date.now()}`,
-        `demo${Date.now()}@example.com`
+        `demo${Date.now()}@example.com`,
+        groupId || 1
       )
 
-      if (tempUser) {
-        const groupId = await getGroupId(group)
-        if (groupId) {
-          await logClick(tempUser.id, groupId, '/comet-promo')
-        }
+      if (tempUser && groupId) {
+        await logClick(tempUser.id, groupId, '/comet-promo')
       }
     } catch (err) {
       console.error('Error logging click:', err)
@@ -51,14 +52,14 @@ export default function ABTestLanding() {
 
     setIsLoading(true)
     try {
+      // Get the group ID first
+      const groupId = await getGroupId(group)
+      
       // Create user with actual form data
-      const user = await getOrCreateUser(formData.name, formData.email)
+      const user = await getOrCreateUser(formData.name, formData.email, groupId || 1)
 
-      if (user) {
-        const groupId = await getGroupId(group)
-        if (groupId) {
-          await logClick(user.id, groupId, '/comet-promo')
-        }
+      if (user && groupId) {
+        await logClick(user.id, groupId, '/comet-promo')
       }
 
       // In a real app, you'd redirect to sign up completion or dashboard

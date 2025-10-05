@@ -39,7 +39,7 @@ export async function logClick(userId: number, groupId: number, pageUrl?: string
 /**
  * Creates or gets a user record via backend API
  */
-export async function getOrCreateUser(name: string, email: string) {
+export async function getOrCreateUser(name: string, email: string, groupId: number = 1) {
   try {
     // Create new user via backend API (backend will handle duplicate checking)
     const response = await fetch(`${BACKEND_URL}/register-user`, {
@@ -50,7 +50,7 @@ export async function getOrCreateUser(name: string, email: string) {
       body: JSON.stringify({
         name: name,
         email: email,
-        group_id: 1 // Default to control group, will be updated by A/B test logic
+        group_id: groupId
       })
     })
 
@@ -79,25 +79,16 @@ export async function getOrCreateUser(name: string, email: string) {
 
 /**
  * Gets group ID by group name
+ * Using simple mapping instead of database calls
  */
 export async function getGroupId(groupName: string): Promise<number | null> {
-  try {
-    const { data, error } = await supabase
-      .from('groups')
-      .select('id')
-      .eq('group_name', groupName)
-      .single()
-
-    if (error || !data) {
-      console.error('Error getting group ID:', error)
-      return null
-    }
-
-    return data.id
-  } catch (err) {
-    console.error('Failed to get group ID:', err)
-    return null
+  // Simple mapping based on your database schema
+  const groupMapping: { [key: string]: number } = {
+    'control': 1,
+    'variant': 2
   }
+  
+  return groupMapping[groupName] || null
 }
 
 /**
