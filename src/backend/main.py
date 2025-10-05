@@ -14,7 +14,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000",  # Next.js dev server
         "https://*.vercel.app",   # Vercel deployments
-        "https://comet-for-students.vercel.app",  # Your Vercel app domain
+        "https://comet-for-students.vercel.app",  # Your frontend domain
         "https://comet-for-students-git-main.vercel.app",  # Vercel preview deployments
     ],
     allow_credentials=True,
