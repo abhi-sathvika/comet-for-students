@@ -14,16 +14,17 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000",  # Next.js dev server
         "https://*.vercel.app",   # Vercel deployments
-        "https://your-domain.com" # Your custom domain
+        "https://comet-for-students.vercel.app",  # Your Vercel app domain
+        "https://comet-for-students-git-main.vercel.app",  # Vercel preview deployments
     ],
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
 
 # Supabase configuration
-SUPABASE_URL = os.getenv("SUPABASE_URL", "your-supabase-url")
-SUPABASE_KEY = os.getenv("SUPABASE_ANON_KEY", "your-supabase-anon-key")
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_ANON_KEY")
 
 # Initialize Supabase client
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)

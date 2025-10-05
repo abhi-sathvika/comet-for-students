@@ -1,31 +1,34 @@
 import { supabase, Click } from './supabase'
 import { getSessionId } from './abtest'
 
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000'
+
 /**
- * Logs click events to Supabase database
+ * Logs click events via backend API
  */
 export async function logClick(userId: number, groupId: number, pageUrl?: string) {
   try {
     const sessionId = getSessionId()
 
-    const clickData: Omit<Click, 'id'> = {
-      user_id: userId,
-      group_id: groupId,
-      session_id: sessionId,
-      page_url: pageUrl || window.location.href
+    const response = await fetch(`${BACKEND_URL}/log-click`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        user_id: userId,
+        group_id: groupId,
+        user_agent: navigator.userAgent,
+        ip_address: null // Will be handled by backend
+      })
+    })
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
     }
 
-    const { data, error } = await supabase
-      .from('clicks')
-      .insert([clickData])
-      .select()
-
-    if (error) {
-      console.error('Error logging click:', error)
-      return false
-    }
-
-    console.log('✅ Click logged successfully:', data)
+    const result = await response.json()
+    console.log('✅ Click logged successfully:', result)
     return true
   } catch (err) {
     console.error('Failed to log click:', err)
@@ -34,11 +37,11 @@ export async function logClick(userId: number, groupId: number, pageUrl?: string
 }
 
 /**
- * Creates or gets a user record
+ * Creates or gets a user record via backend API
  */
 export async function getOrCreateUser(name: string, email: string) {
   try {
-    // First, try to find existing user
+    // First, try to find existing user via Supabase directly
     const { data: existingUser } = await supabase
       .from('users')
       .select('*')
@@ -49,19 +52,36 @@ export async function getOrCreateUser(name: string, email: string) {
       return existingUser
     }
 
-    // Create new user
-    const { data: newUser, error } = await supabase
-      .from('users')
-      .insert([{ name, email }])
-      .select()
-      .single()
+    // Create new user via backend API
+    const response = await fetch(`${BACKEND_URL}/register-user`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        group_id: 1 // Default to control group, will be updated by A/B test logic
+      })
+    })
 
-    if (error) {
-      console.error('Error creating user:', error)
-      return null
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
     }
 
-    return newUser
+    const result = await response.json()
+    
+    if (result.success) {
+      // Return user data in expected format
+      return {
+        id: result.user_id,
+        name: name,
+        email: email,
+        created_at: new Date().toISOString()
+      }
+    }
+
+    return null
   } catch (err) {
     console.error('Failed to get/create user:', err)
     return null
