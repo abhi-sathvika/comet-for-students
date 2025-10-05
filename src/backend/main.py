@@ -42,11 +42,22 @@ class UserRegistration(BaseModel):
 
 @app.get("/")
 async def root():
-    return {"message": "Comet A/B Test API is running"}
+    return {
+        "message": "Comet A/B Test API is running",
+        "supabase_configured": bool(SUPABASE_URL and SUPABASE_KEY),
+        "timestamp": datetime.utcnow().isoformat()
+    }
 
 @app.get("/health")
 async def health_check():
-    return {"status": "healthy", "timestamp": datetime.utcnow()}
+    return {
+        "status": "healthy", 
+        "timestamp": datetime.utcnow().isoformat(),
+        "environment": {
+            "supabase_url_set": bool(SUPABASE_URL),
+            "supabase_key_set": bool(SUPABASE_KEY)
+        }
+    }
 
 @app.post("/log-click")
 async def log_click(click_data: ClickLog):
@@ -73,7 +84,20 @@ async def log_click(click_data: ClickLog):
 async def register_user(user_data: UserRegistration):
     """Register a new user and assign them to a test group"""
     try:
-        # Insert user data into Supabase
+        # First, check if user already exists
+        existing_user = supabase.table("users").select("*").eq("email", user_data.email).execute()
+        
+        if existing_user.data:
+            # User already exists, return existing user data
+            user_id = existing_user.data[0]["id"]
+            return {
+                "success": True,
+                "user_id": user_id,
+                "group_id": user_data.group_id,
+                "existing": True
+            }
+        
+        # Insert new user data into Supabase
         result = supabase.table("users").insert({
             "name": user_data.name,
             "email": user_data.email,
@@ -93,7 +117,8 @@ async def register_user(user_data: UserRegistration):
             return {
                 "success": True,
                 "user_id": user_id,
-                "group_id": user_data.group_id
+                "group_id": user_data.group_id,
+                "existing": False
             }
         else:
             raise HTTPException(status_code=500, detail="Failed to register user")

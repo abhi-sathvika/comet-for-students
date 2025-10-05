@@ -41,18 +41,7 @@ export async function logClick(userId: number, groupId: number, pageUrl?: string
  */
 export async function getOrCreateUser(name: string, email: string) {
   try {
-    // First, try to find existing user via Supabase directly
-    const { data: existingUser } = await supabase
-      .from('users')
-      .select('*')
-      .eq('email', email)
-      .single()
-
-    if (existingUser) {
-      return existingUser
-    }
-
-    // Create new user via backend API
+    // Create new user via backend API (backend will handle duplicate checking)
     const response = await fetch(`${BACKEND_URL}/register-user`, {
       method: 'POST',
       headers: {
