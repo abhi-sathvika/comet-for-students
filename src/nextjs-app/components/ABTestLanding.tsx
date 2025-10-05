@@ -208,7 +208,7 @@ export default function ABTestLanding() {
               <div className="text-yellow-400 text-2xl">★★★★★</div>
             </div>
             <blockquote className="text-lg text-gray-700 italic mb-4">
-              "Comet Pro completely transformed how I manage my studies. The collaboration features are amazing!"
+              &ldquo;Comet Pro completely transformed how I manage my studies. The collaboration features are amazing!&rdquo;
             </blockquote>
             <cite className="text-gray-600 font-semibold">
               - Sarah M., Computer Science Student
