@@ -88,30 +88,46 @@ export function trackABTestAssignment(group: ABTestGroup, testName: string = COM
 export function getGroupConfig(group: ABTestGroup) {
   const configs = {
     control: {
-      title: "🌟 Get Comet Pro for Students!",
-      subtitle: "Unlock premium features designed for student success",
-      ctaText: "Sign Up Now",
-      ctaColor: "bg-blue-600 hover:bg-blue-700",
+      title: "Elevate Your Academic Journey",
+      subtitle: "Professional-grade tools designed specifically for student success and career readiness",
+      ctaText: "Start Free Trial",
+      ctaColor: "bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-lg hover:shadow-xl",
       features: [
-        "Free premium templates",
-        "Advanced collaboration tools",
-        "Priority support",
-        "Student-exclusive pricing"
+        "Advanced Project Management",
+        "Real-time Collaboration Suite",
+        "Professional Templates Library",
+        "Career Development Tools"
       ],
-      highlight: "50% off for students"
+      highlight: "50% Student Discount",
+      theme: {
+        primary: "blue",
+        accent: "blue-50",
+        gradient: "from-blue-50 to-blue-100",
+        cardBg: "bg-white",
+        textPrimary: "text-slate-800",
+        textSecondary: "text-slate-600"
+      }
     },
     variant: {
-      title: "🚀 Transform Your Studies with Comet Pro!",
-      subtitle: "Join thousands of students already boosting their productivity",
-      ctaText: "Get Started Free →",
-      ctaColor: "bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700",
+      title: "Accelerate Your Success",
+      subtitle: "Join 50,000+ students who've transformed their academic performance with our comprehensive platform",
+      ctaText: "Get Started Today",
+      ctaColor: "bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 shadow-lg hover:shadow-xl",
       features: [
-        "AI-powered study tools",
-        "Real-time collaboration",
-        "24/7 expert support",
-        "Exclusive student discounts"
+        "AI-Powered Study Assistant",
+        "Smart Collaboration Hub",
+        "Premium Resource Access",
+        "Mentorship Network"
       ],
-      highlight: "Limited time: 60% off + 7-day free trial"
+      highlight: "60% Off + Free Trial",
+      theme: {
+        primary: "emerald",
+        accent: "emerald-50",
+        gradient: "from-emerald-50 to-teal-50",
+        cardBg: "bg-white",
+        textPrimary: "text-slate-800",
+        textSecondary: "text-slate-600"
+      }
     }
   }
 
