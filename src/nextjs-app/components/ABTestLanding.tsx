@@ -94,7 +94,7 @@ export default function ABTestLanding() {
               </svg>
             </div>
             <h2 className="text-3xl font-bold text-slate-900 mb-2">Complete Your Registration</h2>
-            <p className="text-slate-600">You're just one step away from accessing Comet Pro</p>
+            <p className="text-slate-600">You&apos;re just one step away from accessing Comet Pro</p>
             <div className={`inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-full ${config.theme.accent} border border-slate-200`}>
               <span className="text-xs font-medium text-slate-600">A/B Test Group:</span>
               <span className={`text-xs font-semibold ${group === 'control' ? 'text-blue-700' : 'text-emerald-700'}`}>
@@ -427,7 +427,7 @@ export default function ABTestLanding() {
                 </div>
               </div>
               <blockquote className="text-2xl lg:text-3xl text-slate-800 leading-relaxed mb-8 font-medium">
-                "Comet Pro completely transformed how I manage my studies. The collaboration features and AI-powered insights saved me hours every week and helped me maintain a 4.0 GPA."
+                &ldquo;Comet Pro completely transformed how I manage my studies. The collaboration features and AI-powered insights saved me hours every week and helped me maintain a 4.0 GPA.&rdquo;
               </blockquote>
               <div className="flex items-center justify-center gap-4">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
@@ -449,10 +449,10 @@ export default function ABTestLanding() {
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div className="fade-in-left">
               <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-                Questions? We've got answers.
+                Questions? We&apos;ve got answers.
               </h2>
               <p className="text-xl text-slate-600 mb-8">
-                Everything about eligibility, pricing, and what's included in the student offer.
+                Everything about eligibility, pricing, and what&apos;s included in the student offer.
               </p>
               <button
                 onClick={handleSignUpClick}
@@ -508,7 +508,7 @@ export default function ABTestLanding() {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-slate-900 mb-2">Do I need a credit card?</h3>
-                    <p className="text-slate-600">No credit card required to start your free trial. Upgrade when you're ready to unlock premium features.</p>
+                    <p className="text-slate-600">No credit card required to start your free trial. Upgrade when you&apos;re ready to unlock premium features.</p>
                   </div>
                 </div>
               </div>
