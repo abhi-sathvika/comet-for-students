@@ -88,45 +88,71 @@ export function trackABTestAssignment(group: ABTestGroup, testName: string = COM
 export function getGroupConfig(group: ABTestGroup) {
   const configs = {
     control: {
-      title: "Elevate Your Academic Journey",
-      subtitle: "Professional-grade tools designed specifically for student success and career readiness",
-      ctaText: "Start Free Trial",
-      ctaColor: "bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-lg hover:shadow-xl",
+      title: "Browse Smarter with",
+      titleHighlight: "Comet",
+      subtitle: "The AI-powered browser designed for students. Get instant answers, research faster, and learn more efficiently.",
+      ctaText: "Get Started Free",
+      ctaSecondary: "Watch Demo",
+      ctaColor: "bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 shadow-lg hover:shadow-xl",
       features: [
-        "Advanced Project Management",
-        "Real-time Collaboration Suite",
-        "Professional Templates Library",
-        "Career Development Tools"
+        "AI-Powered Search",
+        "Lightning Fast",
+        "Student-Optimized",
+        "Privacy First"
       ],
-      highlight: "50% Student Discount",
+      featureDescriptions: [
+        "Get instant, accurate answers powered by advanced AI",
+        "Browse smarter with blazing-fast performance",
+        "Built specifically for academic research and learning",
+        "Your data stays private, always"
+      ],
+      highlight: "50K+ Students",
+      stats: [
+        { number: "50K+", label: "Students" },
+        { number: "100+", label: "Universities" }
+      ],
       theme: {
         primary: "blue",
-        accent: "blue-50",
-        gradient: "from-blue-50 to-blue-100",
+        accent: "bg-blue-50",
+        gradient: "from-blue-50 to-teal-50",
         cardBg: "bg-white",
         textPrimary: "text-slate-800",
-        textSecondary: "text-slate-600"
+        textSecondary: "text-slate-600",
+        heroGradient: "from-blue-500 to-teal-500"
       }
     },
     variant: {
-      title: "Accelerate Your Success",
-      subtitle: "Join 50,000+ students who've transformed their academic performance with our comprehensive platform",
-      ctaText: "Get Started Today",
-      ctaColor: "bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 shadow-lg hover:shadow-xl",
+      title: "Why Students Love",
+      titleHighlight: "Comet",
+      subtitle: "Everything you need to supercharge your academic journey",
+      ctaText: "Get Started Free",
+      ctaSecondary: "Watch Demo",
+      ctaColor: "bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 shadow-lg hover:shadow-xl",
       features: [
-        "AI-Powered Study Assistant",
-        "Smart Collaboration Hub",
-        "Premium Resource Access",
-        "Mentorship Network"
+        "AI-Powered Search",
+        "Lightning Fast",
+        "Student-Optimized",
+        "Privacy First"
       ],
-      highlight: "60% Off + Free Trial",
+      featureDescriptions: [
+        "Get instant, accurate answers powered by advanced AI",
+        "Browse smarter with blazing-fast performance",
+        "Built specifically for academic research and learning",
+        "Your data stays private, always"
+      ],
+      highlight: "50K+ Students",
+      stats: [
+        { number: "50K+", label: "Students" },
+        { number: "100+", label: "Universities" }
+      ],
       theme: {
-        primary: "emerald",
-        accent: "emerald-50",
-        gradient: "from-emerald-50 to-teal-50",
+        primary: "blue",
+        accent: "bg-blue-50",
+        gradient: "from-blue-50 to-teal-50",
         cardBg: "bg-white",
         textPrimary: "text-slate-800",
-        textSecondary: "text-slate-600"
+        textSecondary: "text-slate-600",
+        heroGradient: "from-blue-500 to-teal-500"
       }
     }
   }
