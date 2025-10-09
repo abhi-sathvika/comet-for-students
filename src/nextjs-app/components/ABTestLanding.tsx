@@ -167,109 +167,94 @@ export default function ABTestLanding() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-teal-50">
+    <div className="min-h-screen bg-white">
       {/* Top Navigation */}
-      <nav className="bg-white/80 backdrop-blur-sm border-b border-slate-200/50 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-xl bg-gradient-to-r from-blue-500 to-teal-500 shadow-lg"></div>
-              <span className="text-2xl font-bold text-slate-900">Comet</span>
-            </div>
-            <div className="hidden md:flex items-center gap-8">
-              <a className="text-slate-600 hover:text-slate-900 font-medium transition-colors duration-200" href="#features">Features</a>
-              <a className="text-slate-600 hover:text-slate-900 font-medium transition-colors duration-200" href="#testimonials">Testimonials</a>
-              <a className="text-slate-600 hover:text-slate-900 font-medium transition-colors duration-200" href="#faq">FAQ</a>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-slate-200">
-                <span className="text-xs font-medium text-slate-600">A/B Test:</span>
-                <span className="text-xs font-semibold text-blue-700">
-                  {group === 'control' ? 'Control' : 'Variant'}
-                </span>
+      <nav className="bg-white border-b border-gray-100 sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-8">
+              <span className="text-2xl font-bold text-gray-900">Comet</span>
+              <div className="hidden md:flex items-center gap-6">
+                <a className="text-blue-600 underline font-medium" href="#features">Features</a>
+                <a className="text-blue-600 underline font-medium" href="#testimonials">Testimonials</a>
+                <a className="text-blue-600 underline font-medium" href="#faq">FAQ</a>
               </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="text-sm text-gray-600">A/B Test: {group === 'control' ? 'Control' : 'Variant'}</span>
+              <span className="text-sm text-gray-600">Powered by Perplexity AI</span>
             </div>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-20 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            {/* Powered by Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 mb-8">
-              <div className="w-4 h-4 bg-blue-500 rounded-sm"></div>
-              <span className="text-sm font-medium text-slate-600">Powered by Perplexity AI</span>
-            </div>
+      <section className="py-20 lg:py-32">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          {/* Main Heading */}
+          <h1 className="text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+            {config.title}{' '}
+            <span className="text-blue-600">{config.titleHighlight}</span>
+          </h1>
+          
+          {/* Subtitle */}
+          <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+            {config.subtitle}
+          </p>
 
-            {/* Main Heading */}
-            <h1 className="hero-title font-bold tracking-tight text-slate-900 mb-6 leading-tight">
-              {config.title}{' '}
-              <span className="bg-gradient-to-r from-blue-500 to-teal-500 bg-clip-text text-transparent">
-                {config.titleHighlight}
-              </span>
-            </h1>
-            
-            {/* Subtitle */}
-            <p className="hero-subtitle text-slate-600 mb-12 max-w-4xl mx-auto leading-relaxed">
-              {config.subtitle}
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-              <button
-                onClick={handleSignUpClick}
-                disabled={isLoading}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-teal-500 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform transition-all duration-200 hover:scale-105 active:scale-95"
-              >
-                {isLoading ? (
-                  <div className="flex items-center gap-2">
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                    Loading...
-                  </div>
-                ) : (
-                  <>
-                    {config.ctaText}
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </>
-                )}
-              </button>
-              <button className="inline-flex items-center gap-2 px-8 py-4 bg-white text-slate-700 font-semibold rounded-lg border border-slate-200 shadow-sm hover:shadow-md transition-all duration-200">
-                {config.ctaSecondary}
-              </button>
-            </div>
-
-            {/* Stats */}
-            <div className="stats-container flex items-center justify-center gap-12">
-              {config.stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-4xl font-bold text-slate-900 mb-1">{stat.number}</div>
-                  <div className="text-sm text-slate-600 font-medium">{stat.label}</div>
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+            <button
+              onClick={handleSignUpClick}
+              disabled={isLoading}
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg border-2 border-gray-900 hover:bg-gray-50 transition-all duration-200"
+            >
+              {isLoading ? (
+                <div className="flex items-center gap-2">
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-gray-900"></div>
+                  Loading...
                 </div>
-              ))}
-            </div>
+              ) : (
+                <>
+                  {config.ctaText}
+                  <span className="text-2xl font-bold">→</span>
+                </>
+              )}
+            </button>
+            <button className="inline-flex items-center gap-2 px-8 py-4 text-gray-700 font-medium hover:text-gray-900 transition-colors duration-200">
+              {config.ctaSecondary}
+            </button>
+          </div>
+
+          {/* Stats */}
+          <div className="flex items-center justify-center gap-16">
+            {config.stats.map((stat, index) => (
+              <div key={index} className="text-left">
+                <div className="text-4xl font-bold text-gray-900">{stat.number}</div>
+                <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
 
       {/* Features Section */}
-      <section id="features" className="py-20 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+      <section id="features" className="py-20 lg:py-32 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-left mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
               Why Students Love Comet
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600">
               Everything you need to supercharge your academic journey
             </p>
           </div>
           
-          <div className="feature-grid grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 gap-8">
             {config.features.map((feature, index) => {
               const icons = [
-                // AI-Powered Search - Brain icon
+                // AI-Powered Search - Brain/Network icon
                 <svg key="0" className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                 </svg>,
@@ -288,14 +273,14 @@ export default function ABTestLanding() {
               ]
               
               return (
-                <div key={index} className="group bg-blue-50/50 rounded-xl p-8 hover:shadow-lg transition-all duration-300 fade-in-up" style={{animationDelay: `${index * 0.1}s`}}>
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-blue-500 mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div key={index} className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-blue-500 mb-6">
                     <div className="text-white">
                       {icons[index]}
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-4">{feature}</h3>
-                  <p className="text-slate-600 leading-relaxed">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">{feature}</h3>
+                  <p className="text-gray-600 leading-relaxed">
                     {config.featureDescriptions[index]}
                   </p>
                 </div>
@@ -307,7 +292,7 @@ export default function ABTestLanding() {
 
       {/* Call to Action Section */}
       <section className="py-20 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-6">
           <div className="bg-gradient-to-r from-blue-500 to-teal-500 rounded-2xl p-12 lg:p-16 text-center">
             <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
               Ready to Transform Your Browsing?
@@ -318,19 +303,17 @@ export default function ABTestLanding() {
             <button
               onClick={handleSignUpClick}
               disabled={isLoading}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-slate-900 font-semibold rounded-lg shadow-lg hover:shadow-xl transform transition-all duration-200 hover:scale-105 active:scale-95"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg shadow-lg hover:shadow-xl transform transition-all duration-200 hover:scale-105 active:scale-95"
             >
               {isLoading ? (
                 <div className="flex items-center gap-2">
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-slate-900"></div>
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-gray-900"></div>
                   Loading...
                 </div>
               ) : (
                 <>
                   Start Your Journey
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                  <span className="text-xl font-bold">→</span>
                 </>
               )}
             </button>
@@ -339,56 +322,50 @@ export default function ABTestLanding() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <footer className="bg-gray-900 text-white">
+        <div className="max-w-6xl mx-auto px-6 py-16">
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             <div className="md:col-span-2">
               <div className="flex items-center gap-3 mb-6">
-                <div className="h-10 w-10 rounded-xl bg-gradient-to-r from-blue-500 to-teal-500 shadow-lg"></div>
                 <span className="text-2xl font-bold">Comet</span>
               </div>
-              <p className="text-slate-300 text-lg leading-relaxed mb-6 max-w-md">
+              <p className="text-gray-300 text-lg leading-relaxed mb-6 max-w-md">
                 The AI-powered browser designed for students. Get instant answers, research faster, and learn more efficiently.
               </p>
               <div className="flex items-center gap-4">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800 border border-slate-700">
-                  <span className="text-xs font-medium text-slate-400">A/B Test:</span>
-                  <span className="text-xs font-semibold text-blue-400">
-                    {group === 'control' ? 'Control' : 'Variant'}
-                  </span>
-                </div>
+                <span className="text-sm text-gray-400">A/B Test: {group === 'control' ? 'Control' : 'Variant'}</span>
               </div>
             </div>
             
             <div>
               <h3 className="text-lg font-semibold mb-4">Product</h3>
               <ul className="space-y-3">
-                <li><a href="#features" className="text-slate-300 hover:text-white transition-colors duration-200">Features</a></li>
-                <li><a href="#" className="text-slate-300 hover:text-white transition-colors duration-200">Pricing</a></li>
-                <li><a href="#" className="text-slate-300 hover:text-white transition-colors duration-200">Download</a></li>
-                <li><a href="#" className="text-slate-300 hover:text-white transition-colors duration-200">API</a></li>
+                <li><a href="#features" className="text-gray-300 hover:text-white transition-colors duration-200">Features</a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">Pricing</a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">Download</a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">API</a></li>
               </ul>
             </div>
             
             <div>
               <h3 className="text-lg font-semibold mb-4">Support</h3>
               <ul className="space-y-3">
-                <li><a href="#" className="text-slate-300 hover:text-white transition-colors duration-200">Help Center</a></li>
-                <li><a href="#" className="text-slate-300 hover:text-white transition-colors duration-200">Contact Us</a></li>
-                <li><a href="#" className="text-slate-300 hover:text-white transition-colors duration-200">Privacy Policy</a></li>
-                <li><a href="#" className="text-slate-300 hover:text-white transition-colors duration-200">Terms of Service</a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">Help Center</a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">Contact Us</a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">Privacy Policy</a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">Terms of Service</a></li>
               </ul>
             </div>
           </div>
           
-          <div className="border-t border-slate-800 pt-8">
+          <div className="border-t border-gray-800 pt-8">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <div className="text-slate-400 text-sm">
+              <div className="text-gray-400 text-sm">
                 © 2024 Comet. All rights reserved. Educational A/B testing in progress.
               </div>
               <button 
                 onClick={handleSignUpClick}
-                className="inline-flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
+                className="inline-flex items-center gap-2 px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors duration-200"
               >
                 {isLoading ? 'Loading...' : 'Get Started Free'}
               </button>
